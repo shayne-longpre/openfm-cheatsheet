@@ -153,8 +153,8 @@ def streamlit_app():
                 options=["All"] + list(set(RESOURCES["Type"])),
                 default=["All"])
 
-            # st.markdown("###")
-            st.divider()
+            st.markdown("####")
+            # st.divider()
 
             # st.markdown('<p style="font-size: small;">Modality Types:</p>', unsafe_allow_html=True)
             st.markdown('<p style="font-size: 14px;">Modality Types:</p>', unsafe_allow_html=True)
@@ -164,8 +164,8 @@ def streamlit_app():
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
-            # st.markdown("###")
-            st.divider()
+            st.markdown("####")
+            # st.divider()
 
             date_format = 'MMM, YYYY'  # format output
             start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
@@ -179,7 +179,7 @@ def streamlit_app():
                 max_value=end_date,
                 format=date_format)
 
-            st.markdown("###")
+            st.markdown("####")
 
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit Selection")
