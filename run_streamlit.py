@@ -35,6 +35,17 @@ INFO = {}
 def load_data():
     return pd.read_csv("resources.csv").fillna("")
 
+def load_logos():
+    def get_image_base64(image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
+    return {
+        "hf": get_image_base64("logos/web.png"),
+        "web": get_image_base64("logos/hf.png"),
+        "arxiv": get_image_base64("logos/arxiv.png"),
+        "github": get_image_base64("logos/github.png"),
+    }
+
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
         if isinstance(x, str):
@@ -104,6 +115,7 @@ def streamlit_app():
     st.set_page_config(page_title="Open Foundation Model Cheatsheet", layout="wide") #, layout="wide")#, initial_sidebar_state='collapsed')
 
     RESOURCES = load_data()
+    LOGOS = load_logos()
 
     st.title("Open Foundation Model Cheatsheet")
     st.caption("Resources and recommendations for best practices in developing and releasing open models.")
@@ -139,6 +151,11 @@ def streamlit_app():
     """
     with st.expander("Scope & Limitations"):
         st.markdown(scope_limitations_text)
+    col1a, col1b, col1c = st.columns([0.2, 0.2, 0.6], gap="small")
+    with col1a:
+        st.link_button("\"2023 Wrapped\" Cheatsheet Paper", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
+    with col1b:
+        st.link_button("Contribute Resources!", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
     st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
 
     ### SIDEBAR STARTS HERE
@@ -197,50 +214,27 @@ def streamlit_app():
         )
 
         def write_resource(row):
-            # TODO: iterate on showing rows
+            # TODO: Hyperlinks and modalities on each row.
             col1, col2, col3 = st.columns([1,4,1], gap="small")
             col1.write(row["Name"])
             col2.write(row["Description"])
-            # col3.markdown('<a href="https://dataprovenance.org" target="_blank"><img src="../hf.png" width="30" height="30"></a>', unsafe_allow_html=True)
-            # col3.image('<a href="https://dataprovenance.org" target="_blank"><img src="../hf.png" width="30" height="30"></a>')
-            # image_url = "https://dataprovenance.org"
-            # link_url = 
-            # col3.markdown(f"[![]({image_url})]({link_url})", unsafe_allow_html=True)
-
-            def get_image_base64(image_path):
-                with open(image_path, "rb") as image_file:
-                    return base64.b64encode(image_file.read()).decode()
 
             # def create_markdown_image_string(base64_string, link_url):
             #     return f'<a href="{link_url}" target="_blank"><img src="data:image/png;base64,{base64_string}" alt="Image"></a>'
 
-            def create_markdown_image_string(base64_string, link_url, width=30, height=30):
-                img_tag = f'<img src="data:image/png;base64,{base64_string}"'
-                if width:
-                    img_tag += f' width="{width}"'
-                if height:
-                    img_tag += f' height="{height}"'
-                img_tag += ' alt="Image">'
+            def create_markdown_img(base64_string, link_url, dim=30):
+                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
                 return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
-
-            # Path to your local image
-            image_path = "logos/hf.png"
 
             # URL of the hyperlink
             link_url = "https://dataprovenance.org"
 
-            # Get base64 string of the image
-            base64_string = get_image_base64(image_path)
+            for base_str in []:
 
-            # Create the markdown string with the base64 image and link
-            markdown_string = create_markdown_image_string(base64_string, link_url)
+                # Create the markdown string with the base64 image and link
+                markdown_string = create_markdown_img(base64_string, link_url)
+                col3.markdown(markdown_string, unsafe_allow_html=True)
 
-            # Display the markdown in Streamlit
-            col3.markdown(markdown_string, unsafe_allow_html=True)
-
-            # st.markdown('<img src="URL_of_your_image" width="30" height="30">', unsafe_allow_html=True)
-
-            # st.write(row["Name"] + "  |  " + row["Description"])
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
         for section in sections:
