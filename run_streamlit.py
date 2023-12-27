@@ -179,7 +179,7 @@ def streamlit_app():
 
             # st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
-            checkbox_vision = st.checkbox("Vision")
+            checkbox_vision = st.checkbox('<p style="font-size: 14px;">Vision Types:</p>')
             checkbox_speech = st.checkbox("Speech")
 
             st.markdown("####")
