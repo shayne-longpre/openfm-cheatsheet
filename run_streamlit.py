@@ -13,15 +13,11 @@ import numpy as np
 import pandas as pd
 import math
 
-# from src import util
-# from src import filter_util
-# from src.helpers import io
 import constants
-# from src import html_util
 
 import streamlit as st
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
-import streamlit.components.v1 as components
+# from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+# import streamlit.components.v1 as components
 import requests
 import webbrowser
 
@@ -112,7 +108,7 @@ def filter_resources(
 
 
 def streamlit_app():
-    st.set_page_config(page_title="Open Foundation Model Cheatsheet", layout="wide") #, layout="wide")#, initial_sidebar_state='collapsed')
+    st.set_page_config(page_title="Open Foundation Model Cheatsheet", layout="wide") #, initial_sidebar_state='collapsed')
 
     RESOURCES = load_data()
     LOGOS = load_logos()
@@ -226,11 +222,23 @@ def streamlit_app():
             # # URL of the hyperlink
             # link_url = "https://dataprovenance.org"
 
-            # for base_str in []:
+            for logo_img, col in [
+                (LOGOS['arxiv'], 'Paper Link'), 
+                (LOGOS['hf'], 'HF Link'),
+                (LOGOS['github'], 'GitHub Link'), 
+                (LOGOS['web'], 'Website Link'), 
+            ]:
+                if row[col]:
+                    col3.markdown(logo_img, unsafe_allow_html=True)
+                else:
+                    col3.write(f"<div style='width: 30px;'></div>", unsafe_allow_html=True)
+
+                
+                
 
             #     # Create the markdown string with the base64 image and link
             #     markdown_string = create_markdown_img(base64_string, link_url)
-            #     col3.markdown(markdown_string, unsafe_allow_html=True)
+            #     
 
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
@@ -244,7 +252,9 @@ def streamlit_app():
                 write_resource(row)
                 st.divider()
 
-# TODO: Links to paper and submit form.
+# TODO: Links to paper and submit form (make).
+# TODO: Update section names
+# TODO: Cheatsheet Logo
 
 
 
