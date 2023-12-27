@@ -232,14 +232,14 @@ def streamlit_app():
             # link_url = "https://dataprovenance.org"
 
             for logo_img, col in [
-                # (LOGOS['arxiv'], 'Paper Link'), 
+                (LOGOS['arxiv'], 'Paper Link'), 
                 (LOGOS['hf'], 'HF Link'),
-                # (LOGOS['github'], 'GitHub Link'), 
-                # (LOGOS['web'], 'Website Link'), 
+                (LOGOS['github'], 'GitHub Link'), 
+                (LOGOS['web'], 'Website Link'), 
             ]:
                 if row[col]:
                     img2 = create_markdown_img2(logo_img, row[col])
-                    img = create_markdown_img(logo_img, row[col])
+                    # img = create_markdown_img(logo_img, row[col])
                     # col3.write(img == img2)
                     col3.markdown(img2, unsafe_allow_html=True)
                 else:
