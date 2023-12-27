@@ -1,0 +1,17 @@
+ORDERED_SECTION_HEADERS = [
+    'Pretraining Datasets': "Testing paragraph.",
+    'Finetuning Datasets': "Testing paragraph.",
+    'Dataset Search/Explore/Analysis': "Testing paragraph.",
+    'Data Cleaning/Filtering': "Testing paragraph.",
+    'Data Deduplication': "Testing paragraph.",
+    'Data Decontamination': "Testing paragraph.",
+    'Data Auditing': "Testing paragraph.",
+    'Data Governance': "Testing paragraph.",
+    'Model Training': "Testing paragraph.",
+    'Environmental Impact': "Testing paragraph.",
+    'General Capability Eval': "Testing paragraph.",
+    'Risk/Harm Assessment': "Testing paragraph.",
+    'Code Reproducibility': "Testing paragraph.",
+    'License Selection': "Testing paragraph.",
+    'Usage Monitoring': "Testing paragraph.",
+]
