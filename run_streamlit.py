@@ -148,6 +148,7 @@ def streamlit_app():
     with st.expander("Scope & Limitations"):
         st.markdown(scope_limitations_text)
     col1a, col1b, col1c = st.columns([0.3, 0.3, 0.4], gap="small")
+    # TODO: Replace button links.
     with col1a:
         st.link_button("\"2023 Wrapped\" Cheatsheet Paper", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
     with col1b:
@@ -170,7 +171,6 @@ def streamlit_app():
             st.markdown("####")
             # st.divider()
 
-            # st.markdown('<p style="font-size: small;">Modality Types:</p>', unsafe_allow_html=True)
             st.markdown('<p style="font-size: 14px;">Modality Types:</p>', unsafe_allow_html=True)
 
             # st.markdown("Modality Types:")
@@ -182,8 +182,8 @@ def streamlit_app():
             # st.divider()
 
             date_format = 'MMM, YYYY'  # format output
-            start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
-            end_date = dt.datetime.now().date() #-relativedelta(years=2)
+            start_date = dt.date(year=2000,month=1,day=1)
+            end_date = dt.datetime.now().date()
             max_days = end_date-start_date
             
             time_selection = st.slider(
@@ -215,9 +215,9 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            # def create_markdown_img(base64_string, link_url, dim=30):
-            #     img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
-            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+            def create_markdown_img(base64_string, link_url, dim=30):
+                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
             # # URL of the hyperlink
             # link_url = "https://dataprovenance.org"
@@ -229,9 +229,10 @@ def streamlit_app():
                 (LOGOS['web'], 'Website Link'), 
             ]:
                 if row[col]:
-                    col3.markdown(logo_img, unsafe_allow_html=True)
+                    col3.markdown(create_markdown_img(logo_img, row[col]), unsafe_allow_html=True)
                 else:
-                    col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
+                    continue
+                    # col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
 
                 
                 
