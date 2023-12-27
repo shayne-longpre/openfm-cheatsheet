@@ -35,9 +35,9 @@ def load_data():
 
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
-        return pd.to_datetime(x, format='%Y') if "-" in x else pd.to_datetime(x, format='%m-%Y')
+        return pd.to_datetime(x, format='%m-%Y') if "-" in x else pd.to_datetime(x, format='%Y')
 
-    if release_date.lower() in ["frequently updated", ""]:
+    if release_date and release_date.lower() == "frequently updated":
         return True
 
     try:
