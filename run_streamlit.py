@@ -229,7 +229,9 @@ def streamlit_app():
                 (LOGOS['web'], 'Website Link'), 
             ]:
                 if row[col]:
-                    col3.markdown(create_markdown_img(logo_img, row[col]), unsafe_allow_html=True)
+                    img = create_markdown_img(logo_img, row[col])
+                    col3.write(img)
+                    # col3.markdown(img, unsafe_allow_html=True)
                 else:
                     continue
                     # col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
