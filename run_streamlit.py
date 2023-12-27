@@ -138,7 +138,7 @@ def streamlit_app():
     """
     with st.expander("Scope & Limitations"):
         st.markdown(scope_limitations_text)
-    st.text("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
+    st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
 
     # Clean up select menu.
     # Add project header/instructions.
@@ -147,7 +147,7 @@ def streamlit_app():
 
     with st.sidebar:
         
-        st.markdown("""Select the preferred criteria for your datasets.""")
+        st.markdown("""Select the resource criteria.""")
 
         with st.form("data_selection"):
 
@@ -156,10 +156,14 @@ def streamlit_app():
                 ["All"] + list(set(RESOURCES["Type"])),
                 ["All"])
 
-            st.text("Modality Types:")
+            st.markdown("##")
+
+            st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
+
+            st.markdown("##")
 
             # time_selection = st.slider(
             #     "Select resources from this date onwards",
@@ -176,7 +180,7 @@ def streamlit_app():
                 min_value=start_date, 
                 value=start_date,
                 max_value=end_date)
-                # format=date_format)
+                format=date_format)
 
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit Selection")
