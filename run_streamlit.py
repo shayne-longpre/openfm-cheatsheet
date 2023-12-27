@@ -223,10 +223,10 @@ def streamlit_app():
             # link_url = "https://dataprovenance.org"
 
             for logo_img, col in [
-                (LOGOS['arxiv'], 'Paper Link'), 
+                # (LOGOS['arxiv'], 'Paper Link'), 
                 (LOGOS['hf'], 'HF Link'),
-                (LOGOS['github'], 'GitHub Link'), 
-                (LOGOS['web'], 'Website Link'), 
+                # (LOGOS['github'], 'GitHub Link'), 
+                # (LOGOS['web'], 'Website Link'), 
             ]:
                 if row[col]:
                     img = create_markdown_img(logo_img, row[col])
