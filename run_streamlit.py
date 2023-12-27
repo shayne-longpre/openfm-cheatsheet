@@ -123,14 +123,8 @@ def streamlit_app():
 
         with st.form("data_selection"):
 
-            # st.write("Select the acceptable license values for constituent datasets")
-            license_multiselect = st.select_slider(
-                'Select the datasets licensed for these use cases',
-                options=constants.LICENSE_USE_CLASSES,
-                value="Academic-Only")
-
             section_multiselect = st.multiselect(
-                'Select the languages to cover in your datasets',
+                'Select the type of resources you are interested in',
                 ["All"] + list(set(RESOURCES["Type"])),
                 ["All"])
 
@@ -139,7 +133,7 @@ def streamlit_app():
             checkbox_speech = st.checkbox("Speech")
 
             time_selection = st.slider(
-                "Select data release time constraints",
+                "Select resources from this date onwards",
                 value=datetime(2000, 1, 1))
 
             # Every form must have a submit button.
