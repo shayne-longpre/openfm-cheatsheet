@@ -31,7 +31,7 @@ INFO = {}
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(fname).fillna("")
+    return pd.read_csv("resources.csv").fillna("")
 
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
