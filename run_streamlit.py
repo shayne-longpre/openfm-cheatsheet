@@ -134,9 +134,22 @@ def streamlit_app():
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
-            time_selection = st.slider(
-                "Select resources from this date onwards",
-                value=datetime(2000, 1, 1))
+            # time_selection = st.slider(
+            #     "Select resources from this date onwards",
+            #     # options=
+            #     value=datetime(2000, 1, 1))
+
+            date_format = 'MMM DD, YYYY'  # format output
+            start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
+            end_date = dt.datetime.now().date() #-relativedelta(years=2)
+            max_days = end_date-start_date
+            
+            slider = st.slider(
+                'Select resources from this date onwards', 
+                min_value=start_date, 
+                value=start_date,
+                max_value=end_date)
+                # format=date_format)
 
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit Selection")
