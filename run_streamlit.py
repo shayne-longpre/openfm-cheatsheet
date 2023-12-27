@@ -200,7 +200,7 @@ def streamlit_app():
             col1, col2, col3 = st.columns([1,4,1], gap="small")
             col1.write(row["Name"])
             col2.write(row["Description"])
-            col3.markdown('<a href="https://dataprovenance.org" target="_blank"><img src="logos/web.pdf" width="30" height="30"></a>', unsafe_allow_html=True)
+            col3.markdown('<a href="https://dataprovenance.org" target="_blank"><img src="logos/hf.png" width="30" height="30"></a>', unsafe_allow_html=True)
 
             # st.markdown('<img src="URL_of_your_image" width="30" height="30">', unsafe_allow_html=True)
 
