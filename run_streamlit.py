@@ -83,9 +83,9 @@ def filter_resources(
 
     # Apply combined modality filter using any
     modality_conditions = [
-        (text_modality and filtered_df['Text_Modality']),
-        (vision_modality and filtered_df['Vision_Modality']),
-        (speech_modality and filtered_df['Speech_Modality'])
+        filtered_df['Text_Modality'] if text_modality else pd.Series([True] * len(filtered_df)),
+        filtered_df['Vision_Modality'] if vision_modality else pd.Series([True] * len(filtered_df)),
+        filtered_df['Speech_Modality'] if speech_modality else pd.Series([True] * len(filtered_df))
     ]
     if any([text_modality, vision_modality, speech_modality]):
         filtered_df = filtered_df[pd.concat(modality_conditions, axis=1).any(axis=1)]
