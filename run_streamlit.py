@@ -219,21 +219,18 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            # def create_markdown_image_string(base64_string, link_url):
-            #     return f'<a href="{link_url}" target="_blank"><img src="data:image/png;base64,{base64_string}" alt="Image"></a>'
+            # def create_markdown_img(base64_string, link_url, dim=30):
+            #     img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
-            def create_markdown_img(base64_string, link_url, dim=30):
-                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
-                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+            # # URL of the hyperlink
+            # link_url = "https://dataprovenance.org"
 
-            # URL of the hyperlink
-            link_url = "https://dataprovenance.org"
+            # for base_str in []:
 
-            for base_str in []:
-
-                # Create the markdown string with the base64 image and link
-                markdown_string = create_markdown_img(base64_string, link_url)
-                col3.markdown(markdown_string, unsafe_allow_html=True)
+            #     # Create the markdown string with the base64 image and link
+            #     markdown_string = create_markdown_img(base64_string, link_url)
+            #     col3.markdown(markdown_string, unsafe_allow_html=True)
 
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
