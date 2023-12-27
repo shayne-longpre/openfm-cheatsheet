@@ -140,9 +140,6 @@ def streamlit_app():
         st.markdown(scope_limitations_text)
     st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
 
-    # Clean up select menu.
-    # Add project header/instructions.
-
     ### SIDEBAR STARTS HERE
 
     with st.sidebar:
@@ -151,29 +148,30 @@ def streamlit_app():
 
         with st.form("data_selection"):
 
-            st.markdown('Resource Types:')
             section_multiselect = st.multiselect(
-                label="",
+                label='Resource Types:',
                 options=["All"] + list(set(RESOURCES["Type"])),
                 default=["All"])
 
-            st.markdown("###")
+            # st.markdown("###")
+            st.divider()
 
-            st.markdown("Modality Types:")
+            st.markdown('<p style="font-size: small;">Modality Types:</p>', unsafe_allow_html=True)
+            # st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
-            st.markdown("###")
+            # st.markdown("###")
+            st.divider()
 
             date_format = 'MMM, YYYY'  # format output
             start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
             end_date = dt.datetime.now().date() #-relativedelta(years=2)
             max_days = end_date-start_date
             
-            st.markdown('Start Date: ')
             time_selection = st.slider(
-                label="", 
+                label="Start Date:", 
                 min_value=start_date, 
                 value=start_date,
                 max_value=end_date,
