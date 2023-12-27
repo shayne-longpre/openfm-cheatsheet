@@ -175,7 +175,7 @@ def streamlit_app():
 
             # st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
-            checkbox_vision = st.checkbox('<p style="font-size: 14px;">Vision Types:</p>')
+            checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
             st.markdown("####")
@@ -231,7 +231,7 @@ def streamlit_app():
                 if row[col]:
                     col3.markdown(logo_img, unsafe_allow_html=True)
                 else:
-                    col3.write(f"<div style='width: 30px;'></div>", unsafe_allow_html=True)
+                    col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
 
                 
                 
