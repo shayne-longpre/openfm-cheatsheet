@@ -239,7 +239,7 @@ def streamlit_app():
             ]:
                 if row[col]:
                     img = create_markdown_img(logo_img, row[col])
-                    col3.write(img)
+                    # col3.write(img)
                     col3.markdown(img, unsafe_allow_html=True)
                 else:
                     continue
