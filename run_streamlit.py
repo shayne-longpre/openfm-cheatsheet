@@ -100,7 +100,7 @@ def filter_resources(
 
 
 def streamlit_app():
-    st.set_page_config(page_title="Open Foundation Model Cheatsheet") #, layout="wide")#, initial_sidebar_state='collapsed')
+    st.set_page_config(page_title="Open Foundation Model Cheatsheet", layout="wide") #, layout="wide")#, initial_sidebar_state='collapsed')
 
     RESOURCES = load_data()
 
