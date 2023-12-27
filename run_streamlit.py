@@ -144,7 +144,7 @@ def streamlit_app():
             end_date = dt.datetime.now().date() #-relativedelta(years=2)
             max_days = end_date-start_date
             
-            slider = st.slider(
+            time_selection = st.slider(
                 'Select resources from this date onwards', 
                 min_value=start_date, 
                 value=start_date,
