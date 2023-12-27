@@ -215,9 +215,9 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            # def create_markdown_img(base64_string, link_url, dim=30):
-            #     img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
-            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+            def create_markdown_img2(base64_string, link_url, dim=30):
+                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
             def create_markdown_img(base64_string, link_url, width=30, height=30):
                 img_tag = f'<img src="data:image/png;base64,{base64_string}"'
@@ -238,8 +238,9 @@ def streamlit_app():
                 # (LOGOS['web'], 'Website Link'), 
             ]:
                 if row[col]:
+                    img2 = create_markdown_img2(logo_img, row[col])
                     img = create_markdown_img(logo_img, row[col])
-                    # col3.write(img)
+                    col3.write(img == img2)
                     col3.markdown(img, unsafe_allow_html=True)
                 else:
                     continue
