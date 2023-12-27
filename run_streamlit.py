@@ -177,7 +177,7 @@ def streamlit_app():
             st.header(section)
             st.write(constants.ORDERED_SECTION_HEADERS[section])
             section_resources = filtered_resources[filtered_resources["Type"] == section]
-            for row in section_resources:
+            for i, row in section_resources.iterrows():
                 write_resource(row)
 
         # Group sections chronologically.
