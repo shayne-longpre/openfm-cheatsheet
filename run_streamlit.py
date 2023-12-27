@@ -151,7 +151,7 @@ def streamlit_app():
     """
     with st.expander("Scope & Limitations"):
         st.markdown(scope_limitations_text)
-    col1a, col1b, col1c = st.columns([0.2, 0.2, 0.6], gap="small")
+    col1a, col1b, col1c = st.columns([0.3, 0.3, 0.4], gap="small")
     with col1a:
         st.link_button("\"2023 Wrapped\" Cheatsheet Paper", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
     with col1b:
