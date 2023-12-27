@@ -151,36 +151,35 @@ def streamlit_app():
 
         with st.form("data_selection"):
 
+            st.markdown('Resource Types:')
             section_multiselect = st.multiselect(
-                'Resource Types:',
+                label="",
                 ["All"] + list(set(RESOURCES["Type"])),
                 ["All"])
 
-            st.markdown("##")
+            st.markdown("###")
 
             st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
-            st.markdown("##")
-
-            # time_selection = st.slider(
-            #     "Select resources from this date onwards",
-            #     # options=
-            #     value=datetime(2000, 1, 1))
+            st.markdown("###")
 
             date_format = 'MMM, YYYY'  # format output
             start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
             end_date = dt.datetime.now().date() #-relativedelta(years=2)
             max_days = end_date-start_date
             
+            st.markdown('Start Date: ')
             time_selection = st.slider(
-                'Start Date: ', 
+                label="", 
                 min_value=start_date, 
                 value=start_date,
                 max_value=end_date,
                 format=date_format)
+
+            st.markdown("###")
 
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit Selection")
