@@ -26,6 +26,7 @@ import requests
 import webbrowser
 
 from PIL import Image
+import base64
 
 
 INFO = {}
@@ -201,7 +202,32 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
             # col3.markdown('<a href="https://dataprovenance.org" target="_blank"><img src="../hf.png" width="30" height="30"></a>', unsafe_allow_html=True)
-            col3.image('<a href="https://dataprovenance.org" target="_blank"><img src="../hf.png" width="30" height="30"></a>')
+            # col3.image('<a href="https://dataprovenance.org" target="_blank"><img src="../hf.png" width="30" height="30"></a>')
+            # image_url = "https://dataprovenance.org"
+            # link_url = 
+            # col3.markdown(f"[![]({image_url})]({link_url})", unsafe_allow_html=True)
+
+            def get_image_base64(image_path):
+                with open(image_path, "rb") as image_file:
+                    return base64.b64encode(image_file.read()).decode()
+
+            def create_markdown_image_string(base64_string, link_url):
+                return f'<a href="{link_url}" target="_blank"><img src="data:image/png;base64,{base64_string}" alt="Image"></a>'
+
+            # Path to your local image
+            image_path = "logos/hf.png"
+
+            # URL of the hyperlink
+            link_url = "https://dataprovenance.org"
+
+            # Get base64 string of the image
+            base64_string = get_image_base64(image_path)
+
+            # Create the markdown string with the base64 image and link
+            markdown_string = create_markdown_image_string(base64_string, link_url)
+
+            # Display the markdown in Streamlit
+            st.markdown(markdown_string, unsafe_allow_html=True)
 
             # st.markdown('<img src="URL_of_your_image" width="30" height="30">', unsafe_allow_html=True)
 
