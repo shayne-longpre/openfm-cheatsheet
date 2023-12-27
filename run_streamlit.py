@@ -196,15 +196,21 @@ def streamlit_app():
         )
 
         def write_resource(row):
-            st.write(row["Name"] + "  |  " + row["Description"])
+            col1, col2, col3 = st.columns([1,4,1], gap="small")
+            col1.write(row["Name"])
+            col2.write(row["Description"])
+            col3.write("Test")
+            # st.write(row["Name"] + "  |  " + row["Description"])
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
         for section in sections:
             st.header(section)
             st.write(constants.ORDERED_SECTION_HEADERS[section])
+            st.divider()
             section_resources = filtered_resources[filtered_resources["Type"] == section]
             for i, row in section_resources.iterrows():
                 write_resource(row)
+                st.divider()
 
 # iterate on showing rows
 # show section introductions
