@@ -86,9 +86,9 @@ def filter_resources(
 
     # Apply combined modality filter using any
     modality_conditions = [
-        filtered_df['Text_Modality'] if text_modality else pd.Series([True] * len(filtered_df)),
-        filtered_df['Vision_Modality'] if vision_modality else pd.Series([True] * len(filtered_df)),
-        filtered_df['Speech_Modality'] if speech_modality else pd.Series([True] * len(filtered_df))
+        filtered_df['Text_Modality'] if text_modality else pd.Series([False] * len(filtered_df)),
+        filtered_df['Vision_Modality'] if vision_modality else pd.Series([False] * len(filtered_df)),
+        filtered_df['Speech_Modality'] if speech_modality else pd.Series([False] * len(filtered_df))
     ]
     if any([text_modality, vision_modality, speech_modality]):
         filtered_df = filtered_df[pd.concat(modality_conditions, axis=1).any(axis=1)]
@@ -97,17 +97,6 @@ def filter_resources(
     filtered_df = apply_date_filter(filtered_df, time_range)
 
     return filtered_df
-
-
-# Load csv --> dataframe --> list of dicts
-# filter by section + modality
-# present a few rows
-# show section introductions
-# iterate on showing rows
-
-
-def add_instructions():
-    st.title("Data Provenance Explorer")
 
 
 def streamlit_app():
@@ -180,8 +169,11 @@ def streamlit_app():
             for i, row in section_resources.iterrows():
                 write_resource(row)
 
-        # Group sections chronologically.
-        # For each section print the title, the subheader (best practices) and each row
+# filter by modality
+# iterate on showing rows
+# show section introductions
+# Clean up select menu.
+# Add project header/instructions.
 
 
 if __name__ == "__main__":
