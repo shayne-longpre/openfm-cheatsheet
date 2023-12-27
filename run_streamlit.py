@@ -154,8 +154,8 @@ def streamlit_app():
             st.markdown('Resource Types:')
             section_multiselect = st.multiselect(
                 label="",
-                ["All"] + list(set(RESOURCES["Type"])),
-                ["All"])
+                options=["All"] + list(set(RESOURCES["Type"])),
+                default=["All"])
 
             st.markdown("###")
 
