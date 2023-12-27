@@ -179,7 +179,7 @@ def streamlit_app():
                 'Start Date: ', 
                 min_value=start_date, 
                 value=start_date,
-                max_value=end_date)
+                max_value=end_date,
                 format=date_format)
 
             # Every form must have a submit button.
