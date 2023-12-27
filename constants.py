@@ -1,4 +1,4 @@
-ORDERED_SECTION_HEADERS = [
+ORDERED_SECTION_HEADERS = {
     'Pretraining Datasets': "Testing paragraph.",
     'Finetuning Datasets': "Testing paragraph.",
     'Dataset Search/Explore/Analysis': "Testing paragraph.",
@@ -14,4 +14,4 @@ ORDERED_SECTION_HEADERS = [
     'Code Reproducibility': "Testing paragraph.",
     'License Selection': "Testing paragraph.",
     'Usage Monitoring': "Testing paragraph.",
-]
+}
