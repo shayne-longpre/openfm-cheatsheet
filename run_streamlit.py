@@ -211,8 +211,17 @@ def streamlit_app():
                 with open(image_path, "rb") as image_file:
                     return base64.b64encode(image_file.read()).decode()
 
-            def create_markdown_image_string(base64_string, link_url):
-                return f'<a href="{link_url}" target="_blank"><img src="data:image/png;base64,{base64_string}" alt="Image"></a>'
+            # def create_markdown_image_string(base64_string, link_url):
+            #     return f'<a href="{link_url}" target="_blank"><img src="data:image/png;base64,{base64_string}" alt="Image"></a>'
+
+            def create_markdown_image_string(base64_string, link_url, width=30, height=30):
+                img_tag = f'<img src="data:image/png;base64,{base64_string}"'
+                if width:
+                    img_tag += f' width="{width}"'
+                if height:
+                    img_tag += f' height="{height}"'
+                img_tag += ' alt="Image">'
+                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
             # Path to your local image
             image_path = "logos/hf.png"
