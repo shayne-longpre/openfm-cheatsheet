@@ -240,7 +240,7 @@ def streamlit_app():
                 if row[col]:
                     img = create_markdown_img(logo_img, row[col])
                     col3.write(img)
-                    # col3.markdown(img, unsafe_allow_html=True)
+                    col3.markdown(img, unsafe_allow_html=True)
                 else:
                     continue
                     # col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
@@ -263,6 +263,8 @@ def streamlit_app():
             for i, row in section_resources.iterrows():
                 write_resource(row)
                 st.divider()
+                if i > 3:
+                    break
 
 # TODO: Links to paper and submit form (make).
 # TODO: Update section names
