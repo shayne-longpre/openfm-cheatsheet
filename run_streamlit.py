@@ -236,7 +236,7 @@ def streamlit_app():
             markdown_string = create_markdown_image_string(base64_string, link_url)
 
             # Display the markdown in Streamlit
-            st.markdown(markdown_string, unsafe_allow_html=True)
+            col3.markdown(markdown_string, unsafe_allow_html=True)
 
             # st.markdown('<img src="URL_of_your_image" width="30" height="30">', unsafe_allow_html=True)
 
