@@ -264,8 +264,8 @@ def streamlit_app():
             for i, row in section_resources.iterrows():
                 write_resource(row)
                 st.divider()
-                if i > 3:
-                    break
+                # if i > 3:
+                #     break
 
 # TODO: Links to paper and submit form (make).
 # TODO: Update section names
