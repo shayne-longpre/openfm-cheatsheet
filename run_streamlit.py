@@ -196,24 +196,31 @@ def streamlit_app():
         )
 
         def write_resource(row):
+            # TODO: iterate on showing rows
             col1, col2, col3 = st.columns([1,4,1], gap="small")
             col1.write(row["Name"])
             col2.write(row["Description"])
-            col3.write("Test")
+            col3.markdown('<a href="https://dataprovenance.org" target="_blank"><img src="logos/web.pdf" width="30" height="30"></a>', unsafe_allow_html=True)
+
+            # st.markdown('<img src="URL_of_your_image" width="30" height="30">', unsafe_allow_html=True)
+
             # st.write(row["Name"] + "  |  " + row["Description"])
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
         for section in sections:
             st.header(section)
-            st.write(constants.ORDERED_SECTION_HEADERS[section])
+            # TODO: show section introductions
+            # st.write(constants.ORDERED_SECTION_HEADERS[section])
             st.divider()
             section_resources = filtered_resources[filtered_resources["Type"] == section]
             for i, row in section_resources.iterrows():
                 write_resource(row)
                 st.divider()
 
-# iterate on showing rows
-# show section introductions
+# TODO: Links to paper and submit form.
+
+
+
 
 
 if __name__ == "__main__":
@@ -221,60 +228,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-    # with st.form("data_selection"):
-
-    #     col1, col2, col3 = st.columns([1,1,1], gap="medium")
-
-    #     with col1:
-    #         # st.write("Select the acceptable license values for constituent datasets")
-    #         license_multiselect = st.select_slider(
-    #             'Select the datasets licensed for these use cases',
-    #             options=constants.LICENSE_USE_CLASSES,
-    #             value="Academic-Only")
-
-    #         license_attribution = st.toggle('Include Datasets w/ Attribution Requirements', value=True)
-    #         license_sharealike = st.toggle('Include Datasets w/ Share Alike Requirements', value=True)
-    #         openai_license_override = st.toggle('Always include datasets w/ OpenAI-generated data. (I.e. See `instructions` above for details.)', value=False)
-
-    #     with col3:
-            
-    #         taskcats_multiselect = st.multiselect(
-    #             'Select the task categories to cover in your datasets',
-    #             ["All"] + list(INFO["constants"]["TASK_GROUPS"].keys()),
-    #             ["All"])
-
-    #     # with st.expander("More advanced criteria"):
-
-    #         # format_multiselect = st.multiselect(
-    #         #     'Select the format types to cover in your datasets',
-    #         #     ["All"] + INFO["constants"]["FORMATS"],
-    #         #     ["All"])
-
-    #         domain_multiselect = st.multiselect(
-    #             'Select the domain types to cover in your datasets',
-    #             ["All"] + list(INFO["constants"]["DOMAIN_GROUPS"].keys()),
-    #             # ["All", "Books", "Code", "Wiki", "News", "Biomedical", "Legal", "Web", "Math+Science"],
-    #             ["All"])
-
-
-    #     with col2:
-    #         language_multiselect = st.multiselect(
-    #             'Select the languages to cover in your datasets',
-    #             ["All"] + list(INFO["constants"]["LANGUAGE_GROUPS"].keys()),
-    #             ["All"])
-
-    #         time_range_selection = st.slider(
-    #             "Select data release time constraints",
-    #             value=(datetime(2000, 1, 1), datetime(2023, 12, 1)))
-
-    #         # st.write("")
-    #     # st.write("")
-    #     st.divider()
-
-    #     # Every form must have a submit button.
-    #     submitted = st.form_submit_button("Submit Selection")
-
-    # #### ALTERNATIVE ENDS HERE
