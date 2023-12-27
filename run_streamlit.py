@@ -140,8 +140,8 @@ def streamlit_app():
             #     value=datetime(2000, 1, 1))
 
             date_format = 'MMM DD, YYYY'  # format output
-            start_date = dt.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
-            end_date = dt.datetime.now().date() #-relativedelta(years=2)
+            start_date = datetime.date(year=2000,month=1,day=1) #-relativedelta(years=2)  #  I need some range in the past
+            end_date = datetime.now().date() #-relativedelta(years=2)
             max_days = end_date-start_date
             
             time_selection = st.slider(
