@@ -215,8 +215,17 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            def create_markdown_img(base64_string, link_url, dim=30):
-                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+            # def create_markdown_img(base64_string, link_url, dim=30):
+            #     img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+
+            def create_markdown_img(base64_string, link_url, width=30, height=30):
+                img_tag = f'<img src="data:image/png;base64,{base64_string}"'
+                if width:
+                    img_tag += f' width="{width}"'
+                if height:
+                    img_tag += f' height="{height}"'
+                img_tag += ' alt="Image">'
                 return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
             # # URL of the hyperlink
