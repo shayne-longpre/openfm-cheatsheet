@@ -156,7 +156,9 @@ def streamlit_app():
             # st.markdown("###")
             st.divider()
 
-            st.markdown('<p style="font-size: small;">Modality Types:</p>', unsafe_allow_html=True)
+            # st.markdown('<p style="font-size: small;">Modality Types:</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size: 14px;">Modality Types:</p>', unsafe_allow_html=True)
+
             # st.markdown("Modality Types:")
             checkbox_text = st.checkbox("Text", value=True)
             checkbox_vision = st.checkbox("Vision")
