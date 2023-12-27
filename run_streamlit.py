@@ -103,13 +103,6 @@ INFO = {}
 #         custom_metric("% Synthetic Text", metrics["synthetic_pct"])
 
 
-def insert_metric_container(title, key, metrics):
-    with st.container():
-        st.caption(title)
-        fig = util.plot_altair_barchart(metrics[key])
-        # fig = util.plot_altair_piechart(metrics[key], title)
-        st.altair_chart(fig, use_container_width=True, theme="streamlit")
-
 def add_instructions():
     st.title("Data Provenance Explorer")
 
