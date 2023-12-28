@@ -162,7 +162,7 @@ def streamlit_app():
     with col1a:
         st.link_button("\"2023 Wrapped\" Cheatsheet Paper", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
     with col1b:
-        st.link_button("Contribute Resources!", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
+        st.link_button("Contribute Resources for 2024!", 'https://forms.gle/gNtXsqKcG2jwnT9z9', type="primary")
     st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
 
     ### SIDEBAR STARTS HERE
@@ -264,9 +264,7 @@ def streamlit_app():
                 # if i > 3:
                 #     break
 
-# TODO: Links to paper and submit form (make).
 # TODO: Update section names
-# TODO: Cheatsheet Logo
 
 
 
