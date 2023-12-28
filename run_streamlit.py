@@ -171,10 +171,8 @@ def streamlit_app():
 
         image = Image.open('logos/logo.png')        
         # new_size = (width, height)  # Replace 'width' and 'height' with desired values
-        resized_image = image.resize((240,300))
-        st.image(resized_image)
-        
-        st.markdown("""Select the resource criteria.""")
+        # resized_image = image.resize((240,300))
+        st.image(image)
 
         with st.form("data_selection"):
 
@@ -183,7 +181,7 @@ def streamlit_app():
                 options=["All"] + list(set(RESOURCES["Type"])),
                 default=["All"])
 
-            st.markdown("####")
+            # st.markdown("######")
             # st.divider()
 
             st.markdown('<p style="font-size: 14px;">Modality Types:</p>', unsafe_allow_html=True)
@@ -193,7 +191,7 @@ def streamlit_app():
             checkbox_vision = st.checkbox("Vision")
             checkbox_speech = st.checkbox("Speech")
 
-            st.markdown("####")
+            # st.markdown("####")
             # st.divider()
 
             date_format = 'MMM, YYYY'  # format output
@@ -208,7 +206,7 @@ def streamlit_app():
                 max_value=end_date,
                 format=date_format)
 
-            st.markdown("####")
+            # st.markdown("####")
 
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit Selection")
