@@ -40,7 +40,17 @@ def load_logos():
         "web": get_image_base64("logos/web.png"),
         "arxiv": get_image_base64("logos/arxiv.png"),
         "github": get_image_base64("logos/github.png"),
+        "text": get_image_base64("logos/text.png"),
+        "vision": get_image_base64("logos/vision.png"),
+        "speech": get_image_base64("logos/speech.png"),
     }
+
+def create_markdown_img(base64_string, link_url, dim=15):
+    if link_url:
+        img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+        return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+    else:
+        return f'![Image](data:image/png;base64,{base64_string} width="{dim}" height="{dim}")'
 
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
@@ -211,13 +221,19 @@ def streamlit_app():
 
         def write_resource(row):
             # TODO: Hyperlinks and modalities on each row.
-            col1, col2, col3 = st.columns([1,4,1], gap="small")
-            col1.write(row["Name"])
-            col2.write(row["Description"])
+            col1, col2, col3, col4 = st.columns([1,1,5,1], gap="small")
 
-            def create_markdown_img(base64_string, link_url, dim=15):
-                img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
-                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+            modality_icons = []
+            for mod_img, col in [
+                (LOGOS['text'], 'Text_Modality'), 
+                (LOGOS['vision'], 'Vision_Modality'),
+                (LOGOS['speech'], 'Speech_Modality'),
+            ]:
+                if row[col]:
+                    col4.markdown(create_markdown_img(mod_img, None, 15), unsafe_allow_html=True)
+                
+            col2.write(row["Name"])
+            col3.write(row["Description"])
 
             logo_links = []
             for logo_img, col in [
@@ -226,10 +242,10 @@ def streamlit_app():
                 (LOGOS['github'], 'GitHub Link'), 
                 (LOGOS['web'], 'Website Link'), 
             ]:
-                logo_link = create_markdown_img(logo_img, row[col]) if row[col] else "  " # "<div style='width: 30px; height: auto;'></div>"
+                logo_link = create_markdown_img(logo_img, row[col], dim=20) if row[col] else "  " # "<div style='width: 30px; height: auto;'></div>"
                 logo_links.append(logo_link)
-                col3.markdown(logo_link, unsafe_allow_html=True)
-            # col3.markdown(" ".join(logo_links), unsafe_allow_html=True)
+                col4.markdown(logo_link, unsafe_allow_html=True)
+            # col4.markdown(" ".join(logo_links), unsafe_allow_html=True)
                 
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
