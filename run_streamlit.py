@@ -264,8 +264,6 @@ def streamlit_app():
                 # if i > 3:
                 #     break
 
-# TODO: Update section names
-
 
 
 
