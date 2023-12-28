@@ -229,9 +229,9 @@ def streamlit_app():
                 (LOGOS['vision'], 'Vision_Modality'),
                 (LOGOS['speech'], 'Speech_Modality'),
             ]:
-                if row[col]:
-                    modality_icons.append(create_markdown_img(mod_img, None, 15))
-            col4.markdown(" ".join(modality_icons), unsafe_allow_html=True)
+                mod_icon = create_markdown_img(mod_img, None, 15) if row[col] else "  "
+                modality_icons.append(mod_icon)
+            col1.markdown(" ".join(modality_icons), unsafe_allow_html=True)
                 
             col2.write(row["Name"])
             col3.write(row["Description"])
