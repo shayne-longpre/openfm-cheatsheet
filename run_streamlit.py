@@ -215,18 +215,9 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            def create_markdown_img(base64_string, link_url, dim=25):
+            def create_markdown_img(base64_string, link_url, dim=15):
                 img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
                 return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
-
-            # def create_markdown_img_alt(base64_string, link_url, width=30, height=30):
-            #     img_tag = f'<img src="data:image/png;base64,{base64_string}"'
-            #     if width:
-            #         img_tag += f' width="{width}"'
-            #     if height:
-            #         img_tag += f' height="{height}"'
-            #     img_tag += ' alt="Image">'
-            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
             logo_links = []
             for logo_img, col in [
@@ -237,25 +228,9 @@ def streamlit_app():
             ]:
                 logo_link = create_markdown_img(logo_img, row[col]) if row[col] else "  " # "<div style='width: 30px; height: auto;'></div>"
                 logo_links.append(logo_link)
+                col3.markdown(logo_links, unsafe_allow_html=True)
+            # col3.markdown(" ".join(logo_links), unsafe_allow_html=True)
                 
-                # st.markdown("<div style='width: 30px; height: auto;'></div>", unsafe_allow_html=True)
-
-                # :
-                #     img = 
-                #     # img = create_markdown_img(logo_img, row[col])
-                #     # col3.write(img == img2)
-                #     col3.markdown(img, unsafe_allow_html=True)
-                # else:
-                #     # continue
-                #     col3.markdown(f"<div style='width: 20px;'></div>", unsafe_allow_html=True)
-            col3.markdown(" ".join(logo_links), unsafe_allow_html=True)
-                
-                
-
-            #     # Create the markdown string with the base64 image and link
-            #     markdown_string = create_markdown_img(base64_string, link_url)
-            #     
-
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
         for section in sections:
@@ -267,8 +242,8 @@ def streamlit_app():
             for i, row in section_resources.iterrows():
                 write_resource(row)
                 st.divider()
-                if i > 3:
-                    break
+                # if i > 3:
+                #     break
 
 # TODO: Links to paper and submit form (make).
 # TODO: Update section names
