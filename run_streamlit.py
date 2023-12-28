@@ -52,13 +52,6 @@ def create_markdown_img(base64_string, link_url=None, dim=15):
     else:
         return img_tag
 
-# def create_markdown_img(base64_string, link_url, dim=15):
-#     if link_url:
-#         img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
-#         return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
-#     else:
-#         return f'![Image](data:image/png;base64,{base64_string} width="{dim}" height="{dim}")'
-
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
         if isinstance(x, str):
@@ -228,7 +221,7 @@ def streamlit_app():
 
         def write_resource(row):
             # TODO: Hyperlinks and modalities on each row.
-            col1, col2, col3, col4 = st.columns([1,1,5,1], gap="small")
+            col1, col2, col3, col4 = st.columns([0.4,1,5,1], gap="small")
 
             modality_icons = []
             for mod_img, col in [
@@ -236,7 +229,7 @@ def streamlit_app():
                 (LOGOS['vision'], 'Vision_Modality'),
                 (LOGOS['speech'], 'Speech_Modality'),
             ]:
-                mod_icon = create_markdown_img(mod_img, None, 15) if row[col] else "  "
+                mod_icon = create_markdown_img(mod_img, None, 20) if row[col] else "  "
                 modality_icons.append(mod_icon)
             col1.markdown(" ".join(modality_icons), unsafe_allow_html=True)
                 
