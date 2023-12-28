@@ -45,12 +45,19 @@ def load_logos():
         "speech": get_image_base64("logos/speech.png"),
     }
 
-def create_markdown_img(base64_string, link_url, dim=15):
+def create_markdown_img(base64_string, link_url=None, dim=15):
+    img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}px" height="{dim}px" alt="Image">'
     if link_url:
-        img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
         return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
     else:
-        return f'![Image](data:image/png;base64,{base64_string} width="{dim}" height="{dim}")'
+        return img_tag
+
+# def create_markdown_img(base64_string, link_url, dim=15):
+#     if link_url:
+#         img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
+#         return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+#     else:
+#         return f'![Image](data:image/png;base64,{base64_string} width="{dim}" height="{dim}")'
 
 def is_date_match(release_date, filter_start, filter_end="2030"):
     def convert_to_dt(x):
