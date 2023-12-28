@@ -168,6 +168,9 @@ def streamlit_app():
     ### SIDEBAR STARTS HERE
 
     with st.sidebar:
+
+        image = Image.open('logos/logo.png')
+        st.image(image)
         
         st.markdown("""Select the resource criteria.""")
 
@@ -220,7 +223,6 @@ def streamlit_app():
         )
 
         def write_resource(row):
-            # TODO: Hyperlinks and modalities on each row.
             col1, col2, col3, col4 = st.columns([0.4,1,5,1], gap="small")
 
             modality_icons = []
