@@ -169,8 +169,10 @@ def streamlit_app():
 
     with st.sidebar:
 
-        image = Image.open('logos/logo.png')
-        st.image(image)
+        image = Image.open('logos/logo.png')        
+        # new_size = (width, height)  # Replace 'width' and 'height' with desired values
+        resized_image = image.resize((60,60))
+        st.image(resized_image)
         
         st.markdown("""Select the resource criteria.""")
 
