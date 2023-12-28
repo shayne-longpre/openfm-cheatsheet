@@ -230,7 +230,8 @@ def streamlit_app():
                 (LOGOS['speech'], 'Speech_Modality'),
             ]:
                 if row[col]:
-                    col4.markdown(create_markdown_img(mod_img, None, 15), unsafe_allow_html=True)
+                    modality_icons.append(create_markdown_img(mod_img, None, 15))
+            col4.markdown(" ".join(modality_icons), unsafe_allow_html=True)
                 
             col2.write(row["Name"])
             col3.write(row["Description"])
@@ -244,8 +245,8 @@ def streamlit_app():
             ]:
                 logo_link = create_markdown_img(logo_img, row[col], dim=20) if row[col] else "  " # "<div style='width: 30px; height: auto;'></div>"
                 logo_links.append(logo_link)
-                col4.markdown(logo_link, unsafe_allow_html=True)
-            # col4.markdown(" ".join(logo_links), unsafe_allow_html=True)
+                # col4.markdown(logo_link, unsafe_allow_html=True)
+            col4.markdown(" ".join(logo_links), unsafe_allow_html=True)
                 
 
         sections = [x for x in constants.ORDERED_SECTION_HEADERS if x in set(filtered_resources["Type"])]
