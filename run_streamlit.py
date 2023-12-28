@@ -36,8 +36,8 @@ def load_logos():
         with open(image_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode()
     return {
-        "hf": get_image_base64("logos/web.png"),
-        "web": get_image_base64("logos/hf.png"),
+        "hf": get_image_base64("logos/hf.png"),
+        "web": get_image_base64("logos/web.png"),
         "arxiv": get_image_base64("logos/arxiv.png"),
         "github": get_image_base64("logos/github.png"),
     }
@@ -215,37 +215,37 @@ def streamlit_app():
             col1.write(row["Name"])
             col2.write(row["Description"])
 
-            def create_markdown_img2(base64_string, link_url, dim=30):
+            def create_markdown_img(base64_string, link_url, dim=25):
                 img_tag = f'<img src="data:image/png;base64,{base64_string}" width="{dim}" height="{dim}" alt="Image">'
                 return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
-            def create_markdown_img(base64_string, link_url, width=30, height=30):
-                img_tag = f'<img src="data:image/png;base64,{base64_string}"'
-                if width:
-                    img_tag += f' width="{width}"'
-                if height:
-                    img_tag += f' height="{height}"'
-                img_tag += ' alt="Image">'
-                return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
+            # def create_markdown_img_alt(base64_string, link_url, width=30, height=30):
+            #     img_tag = f'<img src="data:image/png;base64,{base64_string}"'
+            #     if width:
+            #         img_tag += f' width="{width}"'
+            #     if height:
+            #         img_tag += f' height="{height}"'
+            #     img_tag += ' alt="Image">'
+            #     return f'<a href="{link_url}" target="_blank">{img_tag}</a>'
 
-            # # URL of the hyperlink
-            # link_url = "https://dataprovenance.org"
-
+            logo_links = []
             for logo_img, col in [
                 (LOGOS['arxiv'], 'Paper Link'), 
                 (LOGOS['hf'], 'HF Link'),
                 (LOGOS['github'], 'GitHub Link'), 
                 (LOGOS['web'], 'Website Link'), 
             ]:
-                if row[col]:
-                    img2 = create_markdown_img2(logo_img, row[col])
-                    # img = create_markdown_img(logo_img, row[col])
-                    # col3.write(img == img2)
-                    col3.markdown(img2, unsafe_allow_html=True)
-                else:
-                    continue
-                    # col3.markdown(f"<div style='width: 1px;'></div>", unsafe_allow_html=True)
-
+                logo_link = create_markdown_img2(logo_img, row[col]) if row[col] else f"<div style='width: 20px;'></div>"
+                logo_links.append(logo_link)
+                # :
+                #     img = 
+                #     # img = create_markdown_img(logo_img, row[col])
+                #     # col3.write(img == img2)
+                #     col3.markdown(img, unsafe_allow_html=True)
+                # else:
+                #     # continue
+                #     col3.markdown(f"<div style='width: 20px;'></div>", unsafe_allow_html=True)
+            col3.markdown(" ".join(logo_links), unsafe_allow_html=True)
                 
                 
 
