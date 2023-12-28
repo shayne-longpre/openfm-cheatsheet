@@ -235,7 +235,7 @@ def streamlit_app():
                 (LOGOS['github'], 'GitHub Link'), 
                 (LOGOS['web'], 'Website Link'), 
             ]:
-                logo_link = create_markdown_img(logo_img, row[col]) if row[col] else f"<div style='width: 20px;'></div>"
+                logo_link = create_markdown_img(logo_img, row[col]) if row[col] else f"<div style='width: 5px;'></div>"
                 logo_links.append(logo_link)
                 # :
                 #     img = 
