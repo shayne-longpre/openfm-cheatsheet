@@ -228,7 +228,7 @@ def streamlit_app():
             ]:
                 logo_link = create_markdown_img(logo_img, row[col]) if row[col] else "  " # "<div style='width: 30px; height: auto;'></div>"
                 logo_links.append(logo_link)
-                col3.markdown(logo_links, unsafe_allow_html=True)
+                col3.markdown(logo_link, unsafe_allow_html=True)
             # col3.markdown(" ".join(logo_links), unsafe_allow_html=True)
                 
 
