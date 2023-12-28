@@ -171,7 +171,7 @@ def streamlit_app():
 
         image = Image.open('logos/logo.png')        
         # new_size = (width, height)  # Replace 'width' and 'height' with desired values
-        resized_image = image.resize((60,60))
+        resized_image = image.resize((240,300))
         st.image(resized_image)
         
         st.markdown("""Select the resource criteria.""")
