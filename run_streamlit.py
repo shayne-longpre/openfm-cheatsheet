@@ -163,7 +163,7 @@ def streamlit_app():
         st.link_button("\"2023 Wrapped\" Cheatsheet Paper", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type="primary")
     with col1b:
         st.link_button("Contribute Resources for 2024!", 'https://forms.gle/gNtXsqKcG2jwnT9z9', type="primary")
-    st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, and UCSB.""")
+    st.markdown("""Assembled by open model developers from AI2, EleutherAI, Google, Hugging Face, Masakhane, McGill, MIT, Princeton, Stanford CRFM, UCSB, and UW.""")
 
     ### SIDEBAR STARTS HERE
 
